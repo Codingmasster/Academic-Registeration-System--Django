@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{%block start %}
+    <h1>Students Result</h1>
+    {{std_data}}
+    <table class="container">
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>GPA</th>
+            <th>Responses</th>
+        </tr>
+        {% for student in std_data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.gpa }}</td>
+            <td style="background-color:
+                {% if student.gpa >= 3.6 %}
+                    yellow;
+                {% elif student.gpa > 3.4 and student.gpa < 3.6 %}
+                    orange;
+                {% elif student.gpa >= 3.2 and student.gpa < 3.4 %}
+                    pink;
+                {% elif student.gpa > 3.0 and student.gpa <= 3.2 %}
+                    white;
+                {% else %}
+                    blue;
+                {% endif %}
+            ">
+                {% if student.gpa >= 3.6 %}
+                    Arryyyy Wahhhh Boss
+                {% elif student.gpa > 3.4 and student.gpa < 3.6 %}
+                    Kia Kehne!!
+                {% elif student.gpa >= 3.2 and student.gpa < 3.4 %}
+                    Behtareen
+                {% elif student.gpa > 3.0 and student.gpa < 3.2 %}
+                    Acha hai
+                {% else %}
+                    Mehnat karooo Jaani
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p>{{friends}}</p>
+    {%if "Rashid" in friends %}
+    Yes Rashid is your friend
+    {% else %}
+    No, Rashid is not your friend
+    {% endif %}
+{% endblock %}
