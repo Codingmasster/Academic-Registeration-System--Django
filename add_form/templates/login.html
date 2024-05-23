@@ -1,0 +1,35 @@
+{% extends "style.html"%}
+{% block start %}  
+  <div class="wrapper">
+    <div class="title">
+      Login
+    </div>
+    <form class="col-6 mx-auto card p-3 shadow-lg rounded-3" enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {% if messages %}
+      {{ message.tags }}
+      <div class= "alert alert-primary" roLe="alert">
+      {% for message in messages %}
+      <div class="error-message">
+        <i class="bi bi-exclamation-triangle me-2"></i>  {{ message }}  </div>
+      
+      {% endfor %}
+      </div>
+      {% endif %}
+      <div class="field">
+        <input type="text" name = "username" required>
+        <label>Username</label>
+      </div>
+      <div class="field">
+        <input type="password" name="password" required>
+        <label>Password</label>
+      </div>
+      <div class="field">
+        <input type="submit" class="btn btn-success" value="Login">
+      </div>
+      <div class="signup-link">
+        Not a member? <a href="http://127.0.0.1:8000/sign_up/">Signup now</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
